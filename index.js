@@ -92,7 +92,7 @@ const movies = [
     {
       release: "2004",
       imageurl:
-        "https://static.wikia.nocookie.net/harrypotter/images/a/a8/Harry_Potter_and_the_Prisoner_of_Azkaban_2.jpg/revision/latest?cb=20130803163319",
+        "https://www.themoviedb.org/t/p/w220_and_h330_face/nBsNZSCwdQMfUI6jEyPvN5W7llO.jpg",
       description:
         "Harry Potter's (Daniel Radcliffe) third year at Hogwarts starts off badly when he learns deranged killer Sirius Black (Gary Oldman) has escaped from Azkaban prison and is bent on murdering the teenage wizard. While Hermione's (Emma Watson) cat torments Ron's (Rupert Grint) sickly rat, causing a rift among the trio, a swarm of nasty Dementors is sent to protect the school from Black. A mysterious new teacher helps Harry learn to defend himself, but what is his secret tie to Sirius Black?",
       title: "Harry Potter and the Prisoner of Azkaban",
@@ -280,41 +280,130 @@ const movies = [
 //   })
   // console.log(createMoviesList);
 let container = document.getElementById('container');
+container.style = 'border: 1px solid red; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px'
 
 // console.log(container);
-  let createMoviesElements = (title, genre, release, description, director) => {
+  let createMoviesElements = (title, genre, release, description, director, imageurl) => {
     let movieContainer = document.createElement('div');
     container.appendChild(movieContainer);
+    movieContainer.style = 'border: 1px solid black; max-with: 100%; background: rgb(238,174,202); background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);';
+
+    let movieImage = document.createElement('img') 
+    movieImage.src = imageurl;
+    movieContainer.appendChild(movieImage);
+    movieImage.style = 'max-width: 200px; height: auto; display: flex;'
+
     let movieTitle = document.createElement('h1');
     movieTitle.className = "list-movie";
     movieContainer.appendChild(movieTitle);
     movieTitle.innerHTML = title; 
+    movieTitle.style = 'display: flex;'
     let movieGenre = document.createElement('h1');
     movieGenre.className = "list-movie";
     movieContainer.appendChild(movieGenre);
-    movieGenre.innerHTML = genre;
+    movieGenre.innerHTML = genre.name;
+    movieGenre.style = 'display:flex;'
+
     let movieRelease = document.createElement ('h2');
     movieRelease.className ="list-movie";
     movieContainer.appendChild(movieRelease);
-    movieRelease.innerHTML = release;
+    movieRelease.innerHTML = `An: ${release}`;
+
     let movieDescription = document.createElement('p');
     movieDescription.className = "list-movie";
     movieContainer.appendChild(movieDescription);
-    movieDescription.innerHTML = description;
+    movieDescription.innerHTML = `Descriere: ${description}`;
+
     let movieDirector = document.createElement ('h2');
     movieDirector.className = "list-movie";
     movieContainer.appendChild(movieDirector);
-    movieDirector.innerHTML = director;
+    movieDirector.innerHTML = `Regizor: ${director.name}`;
+    
+    
   }
+    
 console.log(container);
 
 
  movies.map((movie) => {
-    const {title, genre, release, description, director} = movie;
-   
-    createMoviesElements(title, genre, release, description, director);
+    const {title, genre, release, description, director, imageurl} = movie;
+    createMoviesElements(title, genre, release, description, director, imageurl);
   })
 
 // let movieItem = document.getElementsByClassName('list-movie');
 // movieItem.style.backgroundColor='blue';
+// let movieContainer = document.querySelectorAll('.list-movie');
+// movieContainer.style = 'border: 1px solid red; display: flex;  flex-wrap: wrap; width: 10rem';
+// let imageMovie = document.getElementById('movie-img');
+
+// let createMovieImage = (img) => {
+//       imageMovie.appendChild(movieContainer);
+//       img.src= "https://i.pinimg.com/originals/82/8b/b3/828bb3783453b22bb9f8ff59a77658da.jpg"; 
+//   }
+//   console.log(createMovieImage);
+ 
+  // for(let i = 0; i < movies.length; i++) {
+  //  
+  //   img.src = "https://i.pinimg.com/originals/82/8b/b3/828bb3783453b22bb9f8ff59a77658da.jpg" + i;
+  //   img.appendChild('div');
+  //   img.innerHTML = imageurl;
+  // }
+  // console.log(img)
+
+
+// const img = document.createElement("img");
+
+// img.forEach((movieImg, i) => {
+//   img.src = 
+// document.body.appendChild(img);
+// })
+// movie.genre.name +   movie.director.name
+// const img = document.querySelectorAll("imageurl");
+// for(let i = 0; i < movies.length; i++) {
+  
+//   img.src = "https://i.pinimg.com/originals/82/8b/b3/828bb3783453b22bb9f8ff59a77658da.jpg" + i;
+  
+ 
+// }
+
+// console.log("img");
+
+// let createMovieImage = (img) => {
+//   let imageMovie = document.querySelectorAll("imageurl");
+//     // imageMovie.appendChild('.list-movie');
+//     imageMovie.innerHTML = "imageurl"; 
+// }
+
+// createMovieImage();
+
+// let createMovieListButtons = (moviesArrayList) => {
+//   moviesArrayList.forEach((movieButton) => {
+//     let moviesElements = document.createElement('li');
+//     createMovieListButtons.appendChild(moviesElements);
+//     let sfMovies = movies.filter(movie => movie.genre = "Science Fiction");
+//     let adventureMovies = movies.filter (movie => movie.genre = "Adventure");
+//     let fantasyMovies = movies.filter (movie => movie.genre = "Fantasy")
+//   })
+// }
+
+
+// console.log (createMovieListButtons)
+
+// let getSfMovies = () {
+//   let movieCategory = movies.filter((movie) => {
+//     return movie.genre === 'Science Fiction'
+//   })
+
+// }
+// let sfMovies = movies.filter(movie => movie.genre = "Science Fiction");
+// console.log (sfMovies);
+
+// let adventureMovies = movies.filter (movie => movie.genre = "Adventure")
+
+// console.log(adventureMovies);
+// let fantasyMovies = movies.filter (movie => movie.genre = "Fantasy")
+
+// console.log(fantasyMovies);
+
+
 
